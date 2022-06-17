@@ -1,0 +1,152 @@
+@import "variables";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300&display=swap');
+
+body{
+  margin: 0;
+  overflow: hidden;
+  font-family: Roboto;
+}
+
+.App{
+  height: 100vh;
+  width: 100vw;
+
+  .board{
+    height: 100vh;
+    width: 100vw;
+
+    .container-board{
+      display: flex;
+      width: 80%;
+      height: 90%;
+      margin: 0 auto;
+      margin-top: 50px;
+      border: 1px solid;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+      align-content: flex-start;
+      padding: 20px;
+      overflow-y: auto;
+
+      .wrap-stiker{
+        margin: 10px;
+        .title_stiker{
+          margin-left: 10px;
+          margin-bottom: 2px;
+        }
+        .list_stiker{
+          border: 1px solid;
+          width: 300px;
+          height: 300px;
+          overflow-y: auto;
+          .list_item{
+            display: flex;
+            padding: 5px 0;
+            margin: 0 5px;
+            border-bottom: 1px solid $mutedDark;
+            
+            .checkbox{
+              padding-right: 5px;
+              cursor: pointer;
+              input{
+                cursor: pointer;
+              }
+            }
+            .text{
+
+            }
+          }
+          .add_task{
+            position: relative;
+            padding: 5px;
+            display: flex;
+            margin-right: 10px;
+            margin-top: 5px;
+            justify-content: flex-end;
+            cursor: pointer;
+          }
+
+          .form_task{
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            input{
+              width: 100%;
+              outline: none;
+            }
+            .add{
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      .add_sticker{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px;
+        width: 300px;
+        height: 300px;
+        .circle{
+          display: flex;
+          border-radius: 50px;
+          border: 1px solid $mutedDark;
+          width: 100px;
+          height: 100px;
+          position: relative;
+          cursor: pointer;
+          .vertic{
+            position: absolute;
+            width: 3px;
+            height: 90%;
+            background-color: $mutedDark;
+            left: 44%;
+            margin: 5px;
+          }
+          .horiz{
+            position: absolute;
+            height: 3px;
+            width: 90%;
+            background-color: $mutedDark;
+            top: 44%;
+            margin: 5px;
+          }
+          &:hover{
+            background-color: $mutedDark;
+            .vertic{
+              background-color: #fff;
+            }
+            .horiz{
+              background-color: #fff;
+            }
+          }
+        }
+        
+      }
+
+      .form{
+        display: flex;
+        flex-direction: column;
+        border: 1px solid;
+        width: 300px;
+        height: 300px;
+        margin: 10px;
+        margin-top: 31px;
+        padding: 10px;
+        padding-top: 40px;
+        box-sizing: border-box;
+        input{
+          height: 30px;
+          margin-bottom: 10px;
+          font-size: 16px;
+          outline: none;
+        }
+        button{
+          height: 30px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
