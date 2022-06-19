@@ -33,7 +33,21 @@ body{
         margin: 10px;
         .title_stiker{
           margin-left: 10px;
-          margin-bottom: 2px;
+          margin-bottom: 6px;
+          display: flex;
+          justify-content: space-between;
+          .tools{
+            display: none;
+            margin-bottom: -9px;
+          }
+          &:hover{
+            .tools{
+              display: block;
+              &_item{
+                cursor: pointer;
+              }
+            }
+          }
         }
         .list_stiker{
           border: 1px solid;
@@ -45,16 +59,44 @@ body{
             padding: 5px 0;
             margin: 0 5px;
             border-bottom: 1px solid $mutedDark;
-            
-            .checkbox{
-              padding-right: 5px;
-              cursor: pointer;
-              input{
+            justify-content: space-between;
+            .row{
+              display: flex;
+              width: 265px;
+              .checkbox{
+                padding-right: 5px;
                 cursor: pointer;
+                input{
+                  cursor: pointer;
+                }
+              }
+              .text{
+                overflow: hidden; /* Обрезаем все, что не помещается в область */
+                text-overflow: ellipsis;
+                white-space: nowrap;
               }
             }
-            .text{
+            .row-edit{
+              display: flex;
+              justify-content: space-between;
+              width: 100%;
+              input{
+                width: 100%;
+                margin-right: 10px;
+              }
+            }
 
+            .tools{
+              display: none;
+              margin-bottom: -9px;
+            }
+            &:hover{
+              .tools{
+                display: block;
+                &_item{
+                  cursor: pointer;
+                }
+              }
             }
           }
           .add_task{
@@ -149,4 +191,8 @@ body{
       }
     }
   }
+}
+
+.icon{
+  cursor: pointer;
 }
