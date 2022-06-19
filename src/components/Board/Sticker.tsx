@@ -1,12 +1,13 @@
-import { FC } from "react";
+import {FC, useState} from "react";
 import { IStickerItem } from "../../models/stikers";
 import AddStickerItem from "./AddTask";
 import Task from "./Task";
 import AlertDialogSlide from "../UI/Dialogs/Dialog";
 import {useAppDispatch} from "../../hooks/redux";
-import {removeCategory, removeSticker} from "../../store/reducers/StickersSlice";
+import {editCategory, editSticker, removeCategory, removeSticker} from "../../store/reducers/StickersSlice";
 import {alert, alertText} from "../../helpers/alertText";
 import ReactTooltip from "react-tooltip";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 
 
@@ -17,6 +18,8 @@ interface StickerProps {
 }
  
 const Sticker: FC<StickerProps> = ({title, items, id}) => {
+    const [edit, setEdit] = useState(false);
+    const [inputValue, setInputValue]= useState(title)
 
     const dispatch = useAppDispatch()
 
@@ -25,10 +28,29 @@ const Sticker: FC<StickerProps> = ({title, items, id}) => {
         alert(alertText.removeCategory, "info")
     }
 
+    const onEdit = () => {
+        if(inputValue === ""){
+            alert(alertText.emptyTask, "error")
+            return
+        }
+        dispatch(editCategory({
+            id,
+            title: inputValue
+        }))
+        setEdit(!edit)
+    }
+
     return ( 
         <div className="wrap-stiker">
+            {
+                !edit ?
                     <div className="title_stiker">
-                        <div>{title}</div>
+                        <div
+                            className={"title_text"}
+                            onClick={() => setEdit(!edit)}
+                        >
+                            {title}
+                        </div>
                         <div className="tools">
                             <AlertDialogSlide
                                 onRemove={onRemove}
@@ -38,6 +60,20 @@ const Sticker: FC<StickerProps> = ({title, items, id}) => {
                             />
                         </div>
                     </div>
+                    :
+                    <div className="row-edit">
+                        <input
+                            type="text"
+                            value={inputValue}
+                            onChange={e => setInputValue(e.target.value)}
+                        />
+                        <CheckCircleOutlineIcon
+                            className={"icon"}
+                            onClick={onEdit}
+                        />
+                    </div>
+            }
+
                     <div className="list_stiker">
                         {items.map(item => {
                             return <Task 

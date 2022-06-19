@@ -36,6 +36,12 @@ body{
           margin-bottom: 6px;
           display: flex;
           justify-content: space-between;
+          width: 293px;
+          .title_text{
+            overflow: hidden; /* Обрезаем все, что не помещается в область */
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
           .tools{
             display: none;
             margin-bottom: -9px;
@@ -47,6 +53,16 @@ body{
                 cursor: pointer;
               }
             }
+          }
+        }
+        .row-edit{
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          margin-bottom: 5px;
+          input{
+            width: 100%;
+            margin-right: 10px;
           }
         }
         .list_stiker{
