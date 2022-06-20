@@ -86,7 +86,6 @@ const Sticker: FC<StickerProps> = ({title, items, id}) => {
                         })}
                         <AddStickerItem id={id}/>
                     </div>
-            <ReactTooltip type="info" place="bottom"/>
                 </div>
      );
 }

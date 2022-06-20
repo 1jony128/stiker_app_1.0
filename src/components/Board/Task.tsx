@@ -4,6 +4,8 @@ import {useAppDispatch} from "../../hooks/redux";
 import {editSticker, removeSticker} from "../../store/reducers/StickersSlice";
 import AlertDialogSlide from "../UI/Dialogs/Dialog";
 import {alert, alertText} from "../../helpers/alertText";
+import {Checkbox} from "@mui/material";
+import ReactTooltip from "react-tooltip";
 
 interface TaskProps {
     id: number
@@ -11,7 +13,9 @@ interface TaskProps {
     status: "done" | "backlog" | "inWork",
     category: number
 }
- 
+
+const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+
 const Task: FC<TaskProps> = ({ name, id, status , category}) => {
     const [edit, setEdit] = useState(false);
     const [inputValue, setInputValue]= useState(name)
@@ -42,15 +46,14 @@ const Task: FC<TaskProps> = ({ name, id, status , category}) => {
                 !edit ?
                     <>
                         <div className="row">
-                            <div className="checkbox">
-                                <input type={"checkbox"}/>
-                            </div>
+                            <Checkbox {...label} />
                             <div
                                 className="text"
                                 data-tip={name}
                                 onClick={() => setEdit(!edit)}
                             >
                                 {name}
+                                <ReactTooltip type="info" place="bottom"/>
                             </div>
 
                         </div>

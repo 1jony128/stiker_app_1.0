@@ -79,6 +79,7 @@ body{
             .row{
               display: flex;
               width: 265px;
+              align-items: center;
               .checkbox{
                 padding-right: 5px;
                 cursor: pointer;
@@ -108,7 +109,8 @@ body{
             }
             &:hover{
               .tools{
-                display: block;
+                display: flex;
+                align-items: center;
                 &_item{
                   cursor: pointer;
                 }
