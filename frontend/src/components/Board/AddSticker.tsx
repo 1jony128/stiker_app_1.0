@@ -104,11 +104,14 @@ const AddSticker: FC<AddStickerProps> = () => {
                             placeholder="Опишите категорию"
                         />
                     </div>
+                    <div className="row">
                     <div className="select">
                         <SelectMy
                             options={overtak}
                          />
                     </div>
+                    </div>
+                    
                     <div>
                         Повторение
                     </div>
