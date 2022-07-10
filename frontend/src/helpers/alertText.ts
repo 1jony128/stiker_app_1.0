@@ -22,7 +22,10 @@ export enum alertText {
     emptyTask = "Введите название задачи!",
     addTask = "Задача успешно создана!",
     removeTask = "Задача удалена!",
-    removeCategory = "Категория удалена!"
+    removeCategory = "Категория удалена!",
+    inWorkTask = "Задача взята в работу.",
+    outWorkTask = "Задача перемещна в заблокированные.",
+    doneTask = "Задача выполнена!"
 }
 
 type toastType = "success" | "error" | "info"

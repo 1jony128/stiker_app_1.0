@@ -67,8 +67,8 @@ body{
         }
         .list_stiker{
           border: 1px solid;
-          width: 300px;
-          height: 300px;
+          width: 400px;
+          height: 350px;
           overflow-y: auto;
           .list_item{
             display: flex;
@@ -76,9 +76,13 @@ body{
             margin: 0 5px;
             border-bottom: 1px solid $mutedDark;
             justify-content: space-between;
+
+            &.inWork{
+              background: #efefef;
+            }
             .row{
               display: flex;
-              width: 265px;
+              width: 324px;
               align-items: center;
               .checkbox{
                 padding-right: 5px;
@@ -88,9 +92,18 @@ body{
                 }
               }
               .text{
+                font-size: 12px;
                 overflow: hidden; /* Обрезаем все, что не помещается в область */
                 text-overflow: ellipsis;
                 white-space: nowrap;
+              }
+
+              &.done{
+                .text{
+                  color:$mutedDark;
+                  text-decoration: line-through;
+                  text-underline: $mutedDark;
+                }
               }
             }
             .row-edit{
@@ -106,7 +119,15 @@ body{
             .tools{
               display: none;
               margin-bottom: -9px;
+              &.inWork{
+                display: flex;
+                align-items: center;
+                &_item{
+                  cursor: pointer;
+                }
+              }
             }
+
             &:hover{
               .tools{
                 display: flex;
@@ -202,6 +223,10 @@ body{
           font-size: 16px;
           outline: none;
         }
+        textarea{
+          resize: none; 
+          height: 100px;
+        }
         button{
           height: 30px;
           cursor: pointer;
@@ -213,4 +238,37 @@ body{
 
 .icon{
   cursor: pointer;
+}
+
+.mb3{
+  margin-bottom: 3px;
+}
+
+.input_wrapper{
+  padding: 10px;
+  &.textarea{
+
+    textarea{
+      resize: none; 
+      height: 100px;
+      width: 90%;
+      font: inherit;
+      letter-spacing: inherit;
+      color: currentColor;
+      padding: 10px;
+      border: 1px solid $mutedDark2;
+      border-radius: 4px;
+      outline: none;
+      &:hover, &:focus{
+        border: 2px solid $blue1;
+        padding: 9px;
+      }
+    }
+    
+  }
+}
+
+.select{
+  margin-left: 10px;
+  width: 100px;
 }

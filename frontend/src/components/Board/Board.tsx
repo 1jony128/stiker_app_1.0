@@ -20,6 +20,7 @@ const Board: FC<BoardProps> = () => {
                         return <Sticker 
                                     key={item.id}
                                     title={item.title}
+                                    description={item.description}
                                     id={item.id}
                                     items={[...stickers].filter(sticker => sticker.category === item.id)}
                                 />

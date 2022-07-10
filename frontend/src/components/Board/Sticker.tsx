@@ -2,7 +2,7 @@ import {FC, useState} from "react";
 import { IStickerItem } from "../../models/stikers";
 import AddStickerItem from "./AddTask";
 import Task from "./Task";
-import AlertDialogSlide from "../UI/Dialogs/Dialog";
+import AlertDialogSlide from "../UI/Dialogs/AlertDialogSlide";
 import {useAppDispatch} from "../../hooks/redux";
 import {editCategory, editSticker, removeCategory, removeSticker} from "../../store/reducers/StickersSlice";
 import {alert, alertText} from "../../helpers/alertText";
@@ -14,10 +14,11 @@ import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 interface StickerProps {
     title: string;
     items: IStickerItem[]
-    id: number
+    id: number,
+    description: string
 }
  
-const Sticker: FC<StickerProps> = ({title, items, id}) => {
+const Sticker: FC<StickerProps> = ({title, items, id, description}) => {
     const [edit, setEdit] = useState(false);
     const [inputValue, setInputValue]= useState(title)
 
@@ -35,7 +36,8 @@ const Sticker: FC<StickerProps> = ({title, items, id}) => {
         }
         dispatch(editCategory({
             id,
-            title: inputValue
+            title: inputValue,
+            description
         }))
         setEdit(!edit)
     }
@@ -48,8 +50,10 @@ const Sticker: FC<StickerProps> = ({title, items, id}) => {
                         <div
                             className={"title_text"}
                             onClick={() => setEdit(!edit)}
+                            data-tip={description}
                         >
                             {title}
+                            <ReactTooltip type="info" place="bottom"/>
                         </div>
                         <div className="tools">
                             <AlertDialogSlide
